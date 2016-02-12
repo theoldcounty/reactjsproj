@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+    <script src="https://fb.me/react-with-addons-0.14.6.js"></script>
+    <script src="https://fb.me/react-dom-0.14.6.js"></script>
+    
+    <style>
+      body {
+        padding: 20px
+      }
+    </style>
+
+  </head>
+  <body>
+    <!--container-->
+    <div id="container">
+        <div id="example"></div>
+    </div>
+    <!--/container-->
+
+    <script type="text/babel">
+      var LikeButton = React.createClass({
+        getInitialState: function() {
+          return {liked: false};
+        },
+        handleClick: function(event) {
+          this.setState({liked: !this.state.liked});
+        },
+        render: function() {
+          var text = this.state.liked ? 'like' : 'haven\'t liked';
+          return (
+            <p onClick={this.handleClick}>
+              You {text} this. Click to toggle.
+            </p>
+          );
+        }
+      });
+
+      ReactDOM.render(
+        <LikeButton />,
+        document.getElementById('example')
+      );
+
+    </script>
+  </body>
+</html>
